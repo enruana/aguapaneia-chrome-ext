@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../lib/components/Input.tsx"],
+  "sourcesContent": ["import type { ComponentPropsWithoutRef } from 'react';\nimport { cn } from '../utils';\n\nexport type InputProps = {\n  theme?: 'light' | 'dark';\n} & ComponentPropsWithoutRef<'input'>;\n\nexport function Input({ theme, className, ...props }: InputProps) {\n  return (\n    <input\n      className={cn(\n        className,\n        'py-1 px-2 rounded shadow',\n        theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-gray-700 text-white border-gray-600',\n        'border focus:outline-none focus:ring-2 focus:ring-blue-500'\n      )}\n      {...props}\n    />\n  );\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;AASI;AARJ,SAAS,UAAU;AAMZ,gBAAS,MAAM,IAA4C;AAA5C,eAAE,SAAO,UAP/B,IAOsB,IAAuB,kBAAvB,IAAuB,CAArB,SAAO;AAC7B,SACE;AAAA,IAAC;AAAA;AAAA,MACC,WAAW;AAAA,QACT;AAAA,QACA;AAAA,QACA,UAAU,UAAU,wCAAwC;AAAA,QAC5D;AAAA,MACF;AAAA,OACI;AAAA,EACN;AAEJ;",
+  "names": []
+}

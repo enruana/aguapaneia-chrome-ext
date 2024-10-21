@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../lib/impl/anthropicTokenStorage.ts"],
+  "sourcesContent": ["import { StorageEnum } from '../base/enums';\nimport { createStorage } from '../base/base';\nimport type { BaseStorage } from '../base/types';\n\ntype AnthropicToken = string;\n\ntype AnthropicTokenStorage = BaseStorage<AnthropicToken> & {\n  clear: () => Promise<void>;\n};\n\nconst storage = createStorage<AnthropicToken>('anthropic-token-key', '', {\n  storageEnum: StorageEnum.Local,\n  liveUpdate: true,\n});\n\n// You can extend it with your own methods\nexport const anthropicTokenStorage: AnthropicTokenStorage = {\n  ...storage,\n  clear: async () => {\n    await storage.set('');\n  },\n};\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,SAAS,mBAAmB;AAC5B,SAAS,qBAAqB;AAS9B,MAAM,UAAU,cAA8B,uBAAuB,IAAI;AAAA,EACvE,aAAa,YAAY;AAAA,EACzB,YAAY;AACd,CAAC;AAGM,aAAM,wBAA+C,iCACvD,UADuD;AAAA,EAE1D,OAAO,MAAY;AACjB,UAAM,QAAQ,IAAI,EAAE;AAAA,EACtB;AACF;",
+  "names": []
+}
