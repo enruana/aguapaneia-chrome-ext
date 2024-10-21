@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../../../lib/utils/messaging.ts"],
-  "sourcesContent": ["export function sendMessageToContentUI(message: any) {\n  if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {\n    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {\n      const activeTab = tabs[0];\n      if (activeTab && activeTab.id) {\n        chrome.tabs.sendMessage(activeTab.id, message);\n      }\n    });\n  } else {\n    console.warn('chrome.tabs API is not available in this context');\n  }\n}"],
-  "mappings": ";AAAO,gBAAS,uBAAuB,SAAc;AACnD,MAAI,OAAO,WAAW,eAAe,OAAO,QAAQ,OAAO,KAAK,OAAO;AACrE,WAAO,KAAK,MAAM,EAAE,QAAQ,MAAM,eAAe,KAAK,GAAG,CAAC,SAAS;AACjE,YAAM,YAAY,KAAK,CAAC;AACxB,UAAI,aAAa,UAAU,IAAI;AAC7B,eAAO,KAAK,YAAY,UAAU,IAAI,OAAO;AAAA,MAC/C;AAAA,IACF,CAAC;AAAA,EACH,OAAO;AACL,YAAQ,KAAK,kDAAkD;AAAA,EACjE;AACF;",
+  "sources": [],
+  "sourcesContent": [],
+  "mappings": "",
   "names": []
 }

@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import App from '@src/App';
 import tailwindcssOutput from '../dist/tailwind-output.css?inline';
+import AguapaneIAButton from './components/AguapaneIAButton';
 
 const root = document.createElement('div');
 root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
