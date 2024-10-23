@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../lib/components/icons/Moon.tsx"],
-  "sourcesContent": ["import React from 'react';\n\ninterface MoonIconProps {\n  className?: string;\n}\n\nconst MoonIcon: React.FC<MoonIconProps> = ({ className = \"h-6 w-6\" }) => (\n  <svg xmlns=\"http://www.w3.org/2000/svg\" className={className} fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n    <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z\" />\n  </svg>\n);\n\nexport default MoonIcon;"],
-  "mappings": ";AAQI;AAFJ,MAAM,WAAoC,CAAC,EAAE,YAAY,UAAU,MACjE,oBAAC,SAAI,OAAM,8BAA6B,WAAsB,MAAK,QAAO,SAAQ,aAAY,QAAO,gBACnG,8BAAC,UAAK,eAAc,SAAQ,gBAAe,SAAQ,aAAa,GAAG,GAAE,yFAAwF,GAC/J;AAGF,eAAe;",
-  "names": []
-}

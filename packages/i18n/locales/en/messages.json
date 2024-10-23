@@ -1,11 +1,11 @@
 {
   "extensionDescription": {
-    "description": "Extension description",
-    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+    "description": "AguapaneIA: Navigate with intelligence, boost your productivity",
+    "message": "AguapaneIA"
   },
   "extensionName": {
     "description": "Extension name",
-    "message": "Chrome extension boilerplate"
+    "message": "AguapaneIA"
   },
   "toggleTheme": {
     "message": "Toggle theme"

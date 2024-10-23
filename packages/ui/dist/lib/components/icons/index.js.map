@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../lib/components/icons/index.ts"],
-  "sourcesContent": ["export * from './MoonIcon';"],
-  "mappings": ";AAAA,cAAc;",
-  "names": []
-}
