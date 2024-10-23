@@ -13,7 +13,7 @@
 
 [36m
 [1mlib/injections/reload.ts[22m → [1mbuild/injections/reload.js[22m...[39m
-[32mcreated [1mbuild/injections/reload.js[22m in [1m37ms[22m[39m
+[32mcreated [1mbuild/injections/reload.js[22m in [1m44ms[22m[39m
 [36m
 [1mlib/injections/refresh.ts[22m → [1mbuild/injections/refresh.js[22m...[39m
-[32mcreated [1mbuild/injections/refresh.js[22m in [1m13ms[22m[39m
+[32mcreated [1mbuild/injections/refresh.js[22m in [1m12ms[22m[39m

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../lib/components/Footer.tsx"],
+  "sourcesContent": ["import React from \"react\";\n\ninterface FooterProps {\n  onClose?: () => void;\n  children?: React.ReactNode;\n}\n\nconst Footer: React.FC<FooterProps> = ({ onClose, children }) => {\n  return (\n    <footer className=\"p-6 bg-gray-50 flex justify-between items-center\">\n      <div>{children}</div>\n      <div>\n        {onClose && (\n          <button\n            onClick={onClose}\n            className=\"py-2 px-6 bg-white text-red-600 border border-red-600 rounded-lg hover:bg-red-50 transition duration-200 transform hover:scale-105\"\n          >\n            Close\n          </button>\n        )}\n      </div>\n    </footer>\n  );\n};\n\nexport { Footer };\n"],
+  "mappings": ";AASI,SACE,KADF;AAFJ,MAAM,SAAgC,CAAC,EAAE,SAAS,SAAS,MAAM;AAC/D,SACE,qBAAC,YAAO,WAAU,oDAChB;AAAA,wBAAC,SAAK,UAAS;AAAA,IACf,oBAAC,SACE,qBACC;AAAA,MAAC;AAAA;AAAA,QACC,SAAS;AAAA,QACT,WAAU;AAAA,QACX;AAAA;AAAA,IAED,GAEJ;AAAA,KACF;AAEJ;AAEA,SAAS;",
+  "names": []
+}

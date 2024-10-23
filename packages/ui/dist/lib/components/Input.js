@@ -27,20 +27,20 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import { jsx } from "react/jsx-runtime";
-import { cn } from "../utils";
-export function Input(_a) {
-  var _b = _a, { theme, className } = _b, props = __objRest(_b, ["theme", "className"]);
-  return /* @__PURE__ */ jsx(
-    "input",
-    __spreadValues({
-      className: cn(
-        className,
-        "py-1 px-2 rounded shadow",
-        theme === "light" ? "bg-white text-black border-gray-300" : "bg-gray-700 text-white border-gray-600",
-        "border focus:outline-none focus:ring-2 focus:ring-blue-500"
-      )
-    }, props)
-  );
-}
+import { jsx, jsxs } from "react/jsx-runtime";
+const Input = (_a) => {
+  var _b = _a, { label, className = "", as = "input", rows } = _b, props = __objRest(_b, ["label", "className", "as", "rows"]);
+  const InputComponent = as === "textarea" ? "textarea" : "input";
+  return /* @__PURE__ */ jsxs("div", { className: "mb-4", children: [
+    label && /* @__PURE__ */ jsx("label", { className: "block text-sm font-semibold text-gray-700 mb-2", children: label }),
+    /* @__PURE__ */ jsx(
+      InputComponent,
+      __spreadValues({
+        className: `w-full p-2 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500 ${className}`,
+        rows: as === "textarea" ? rows : void 0
+      }, props)
+    )
+  ] });
+};
+export { Input };
 //# sourceMappingURL=Input.js.map

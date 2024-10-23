@@ -1,20 +1,28 @@
-import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../utils';
+import React from "react";
 
-export type InputProps = {
-  theme?: 'light' | 'dark';
-} & ComponentPropsWithoutRef<'input'>;
-
-export function Input({ theme, className, ...props }: InputProps) {
-  return (
-    <input
-      className={cn(
-        className,
-        'py-1 px-2 rounded shadow',
-        theme === 'light' ? 'bg-white text-black border-gray-300' : 'bg-gray-700 text-white border-gray-600',
-        'border focus:outline-none focus:ring-2 focus:ring-blue-500'
-      )}
-      {...props}
-    />
-  );
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+  label?: string;
+  as?: 'input' | 'textarea';
+  rows?: number;
 }
+
+const Input: React.FC<InputProps> = ({ label, className = "", as = 'input', rows, ...props }) => {
+  const InputComponent = as === 'textarea' ? 'textarea' : 'input';
+  
+  return (
+    <div className="mb-4">
+      {label && (
+        <label className="block text-sm font-semibold text-gray-700 mb-2">
+          {label}
+        </label>
+      )}
+      <InputComponent
+        className={`w-full p-2 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500 ${className}`}
+        rows={as === 'textarea' ? rows : undefined}
+        {...props}
+      />
+    </div>
+  );
+};
+
+export { Input };

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../lib/components/Header.tsx"],
+  "sourcesContent": ["import React from \"react\";\n\ninterface HeaderProps {\n  title?: string;\n  icon?: React.ReactNode;\n}\n\nconst Header: React.FC<HeaderProps> = ({ title = \"AguapaneIA\", icon }) => {\n  return (\n    <header className=\"p-6 border-b border-gray-200 flex items-center justify-between\">\n      <h1 className=\"text-2xl font-bold text-gray-800 flex items-center\">\n        {icon && <div className=\"w-12 h-12 mr-2 text-red-600\">{icon}</div>}\n        {title}\n      </h1>\n    </header>\n  );\n};\n\nexport { Header };\n"],
+  "mappings": ";AAUM,SACW,KADX;AAHN,MAAM,SAAgC,CAAC,EAAE,QAAQ,cAAc,KAAK,MAAM;AACxE,SACE,oBAAC,YAAO,WAAU,kEAChB,+BAAC,QAAG,WAAU,sDACX;AAAA,YAAQ,oBAAC,SAAI,WAAU,+BAA+B,gBAAK;AAAA,IAC3D;AAAA,KACH,GACF;AAEJ;AAEA,SAAS;",
+  "names": []
+}

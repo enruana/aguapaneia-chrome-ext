@@ -1,93 +1,71 @@
-import '@src/Popup.css';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
-import type { ComponentPropsWithoutRef } from 'react';
-import { Button, MoonIcon, SunIcon } from '@extension/ui';
+import "@src/Popup.css";
+import { useStorage, withErrorBoundary, withSuspense } from "@extension/shared";
+import type { ComponentPropsWithoutRef } from "react";
+import { Button, Footer } from "@extension/ui";
 
 const notificationOptions = {
-  type: 'basic',
-  iconUrl: chrome.runtime.getURL('icon-34.png'),
-  title: 'Injecting content script error',
-  message: 'You cannot inject script here!',
+  type: "basic",
+  iconUrl: chrome.runtime.getURL("icon-34.png"),
+  title: "Injecting content script error",
+  message: "You cannot inject script here!",
 } as const;
 
 const Popup = () => {
-  const theme = useStorage(exampleThemeStorage);
-  const isLight = theme === 'light';
-  const logo = isLight ? 'popup/logo_vertical.svg' : 'popup/logo_vertical_dark.svg';
-  const goGithubSite = () =>
-    chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
-
-  const injectContentScript = async () => {
-    const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
-
-    if (tab.url!.startsWith('about:') || tab.url!.startsWith('chrome:')) {
-      chrome.notifications.create('inject-error', notificationOptions);
-    }
-
-    await chrome.scripting
-      .executeScript({
-        target: { tabId: tab.id! },
-        files: ['/content-runtime/index.iife.js'],
-      })
-      .catch(err => {
-        if (err.message.includes('Cannot access a chrome:// URL')) {
-          chrome.notifications.create('inject-error', notificationOptions);
-        }
-      });
-  };
+  const logo = "popup/logo_vertical.svg";
 
   const openOptionsPage = () => {
     chrome.runtime.openOptionsPage();
   };
 
   return (
-    <div className={`App ${isLight ? 'bg-gradient-to-br from-blue-100 to-purple-100' : 'bg-gradient-to-br from-gray-800 to-purple-900'} min-h-screen flex flex-col items-center justify-center p-6`}>
-      <div className={`m-6 ${isLight ? 'bg-white' : 'bg-gray-700'} rounded-2xl shadow-2xl p-8 w-full max-w-md transform transition-all duration-300`}>
-        <img src={chrome.runtime.getURL(logo)} alt="Logo" className="w-32 h-32 mx-auto mb-6" />
-        <h1 className={`text-3xl font-extrabold mb-6 text-center ${isLight ? 'text-gray-800' : 'text-gray-100'}`}>
-          Chrome Extension
-        </h1>
-        <Button
-          onClick={injectContentScript}
-          theme={theme}
-          className='w-full mb-4 py-3 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg'
-        >
-          Inject Content Script
-        </Button>
-        <Button
-          onClick={openOptionsPage}
-          theme={theme}
-          className='w-full mb-6 py-3 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg'
-        >
-          Open Options Page
-        </Button>
-        <div className="flex justify-center">
-          <ToggleButton>
-            {isLight ? <MoonIcon className="w-6 h-6" /> : <SunIcon className="w-6 h-6" />}
+    <div className="bg-white flex items-center justify-center z-[9999] h-screen">
+      <div className="bg-white rounded-3xl shadow-2xl w-96 max-w-md overflow-hidden">
+        <div className="p-10 space-y-8">
+          <div className="text-center">
+            <img
+              src={chrome.runtime.getURL(logo)}
+              alt="Logo"
+              className="w-28 h-28 mx-auto mb-6 drop-shadow-xl "
+            />
+            <h1 className="text-4xl font-extrabold mb-2 text-gray-800 tracking-tight">
+              AguapaneIA
+            </h1>
+            <p className="text-lg text-gray-600 mb-6">
+              Tu asistente inteligente personal
+            </p>
+          </div>
+          
+          <div className="bg-gray-50 rounded-xl p-6 shadow-inner">
             
-          </ToggleButton>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-center">
+                <span className="mr-2">🔄</span> Refactorizar texto
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2">🌐</span> Traducir texto
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2">💡</span> Generar resultados con prompts personalizados
+              </li>
+            </ul>
+          </div>
+          
+          <Button
+            onClick={openOptionsPage}
+            className="w-full bg-red-500 text-white py-4 text-lg font-semibold rounded-xl hover:bg-red-600 transition-colors duration-300 transform hover:scale-105"
+          >
+            Configurar AguapaneIA
+          </Button>
         </div>
       </div>
     </div>
   );
 };
 
-const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
-  const theme = useStorage(exampleThemeStorage);
-  return (
-    <button
-      className={`
-        ${props.className}
-        font-bold py-2 px-6 rounded-full shadow-lg hover:scale-105 flex items-center justify-center transition-all duration-300
-        ${theme === 'light' 
-          ? 'bg-gradient-to-r from-purple-400 to-pink-500 text-white shadow-purple-300/50' 
-          : 'bg-gradient-to-r from-blue-500 to-teal-400 text-white shadow-blue-300/50'}
-      `}
-      onClick={exampleThemeStorage.toggle}>
-      {props.children}
-    </button>
-  );
-};
-
-export default withErrorBoundary(withSuspense(Popup, <div className="text-xl font-bold animate-pulse"> Loading ... </div>), <div className="text-xl font-bold text-red-500"> Error Occurred </div>);
+export default withErrorBoundary(
+  withSuspense(
+    Popup,
+    <div className="text-xl font-bold animate-pulse">Cargando...</div>
+  ),
+  <div className="text-xl font-bold text-red-500">Error Ocurrido</div>
+);

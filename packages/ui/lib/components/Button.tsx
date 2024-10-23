@@ -1,20 +1,24 @@
-import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../utils';
+import React from "react";
 
-export type ButtonProps = {
-  theme?: 'light' | 'dark';
-} & ComponentPropsWithoutRef<'button'>;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+}
 
-export function Button({ theme, className, children, ...props }: ButtonProps) {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  className = "",
+  ...props
+}) => {
+  const baseClasses =
+    "py-3 px-4 rounded-lg transition duration-300 transform hover:scale-105 shadow-md";
+
   return (
     <button
-      className={cn(
-        className,
-        'py-1 px-4 rounded shadow hover:scale-105',
-        theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
-      )}
-      {...props}>
+      className={`${baseClasses} ${className}`}
+      {...props}
+    >
       {children}
     </button>
   );
-}
+};
+
+export { Button };

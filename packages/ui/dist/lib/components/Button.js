@@ -31,20 +31,23 @@ var __objRest = (source, exclude) => {
   return target;
 };
 import { jsx } from "react/jsx-runtime";
-import { cn } from "../utils";
-export function Button(_a) {
-  var _b = _a, { theme, className, children } = _b, props = __objRest(_b, ["theme", "className", "children"]);
+const Button = (_a) => {
+  var _b = _a, {
+    children,
+    className = ""
+  } = _b, props = __objRest(_b, [
+    "children",
+    "className"
+  ]);
+  const baseClasses = "py-3 px-4 rounded-lg transition duration-300 transform hover:scale-105 shadow-md";
   return /* @__PURE__ */ jsx(
     "button",
     __spreadProps(__spreadValues({
-      className: cn(
-        className,
-        "py-1 px-4 rounded shadow hover:scale-105",
-        theme === "light" ? "bg-white text-black" : "bg-black text-white"
-      )
+      className: `${baseClasses} ${className}`
     }, props), {
       children
     })
   );
-}
+};
+export { Button };
 //# sourceMappingURL=Button.js.map

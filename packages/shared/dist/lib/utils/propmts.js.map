@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../lib/utils/propmts.ts"],
+  "sourcesContent": ["const REFACTOR_TEXT_PROMPT = `\nYou are an AI assistant. Refactor the following text to improve readability and efficiency:\n- Maintain the original language\n- Provide only the refactored text without any explanations or introductions\nText to refactor:\n`;\n\nconst EN_ES_PROMPT = `\nTranslate the following text from English to Spanish:\n- Provide only the translated text without any explanations or introductions\nText to translate:\n`;\n\nconst ES_EN_PROMPT = `\nTranslate the following text from Spanish to English:\n- Provide only the translated text without any explanations or introductions\nText to translate:\n`;\n\nexport {\n    REFACTOR_TEXT_PROMPT,\n    EN_ES_PROMPT,\n    ES_EN_PROMPT,\n}"],
+  "mappings": ";AAAA,MAAM,uBAAuB;AAAA;AAAA;AAAA;AAAA;AAAA;AAO7B,MAAM,eAAe;AAAA;AAAA;AAAA;AAAA;AAMrB,MAAM,eAAe;AAAA;AAAA;AAAA;AAAA;AAMrB;AAAA,EACI;AAAA,EACA;AAAA,EACA;AAAA;",
+  "names": []
+}

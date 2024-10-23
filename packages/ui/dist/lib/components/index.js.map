@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../lib/components/index.ts"],
-  "sourcesContent": ["export * from './Button';\nexport * from './Input';\nexport * from './MoonIcon';\nexport * from './SunIcon';"],
-  "mappings": ";AAAA,cAAc;AACd,cAAc;AACd,cAAc;AACd,cAAc;",
+  "sourcesContent": ["// components\nexport * from './Button';\nexport * from './Input';\nexport * from './Header';\nexport * from './Footer';\n\n// icons \nexport * from './MoonIcon';\nexport * from './SunIcon';\n"],
+  "mappings": ";AACA,cAAc;AACd,cAAc;AACd,cAAc;AACd,cAAc;AAGd,cAAc;AACd,cAAc;",
   "names": []
 }
