@@ -23,14 +23,39 @@ export default function TextSelectionHandler() {
 
   useEffect(() => {
     const handleSelectionChange = () => {
-      if (isModalOpen) return; // Ignore selection changes when modal is open
+      if (isModalOpen) return;
 
       const selection = window.getSelection();
       if (selection && selection.toString().trim() !== "") {
-        setSelectedText(selection.toString().trim());
+        const selectedText = selection.toString().trim();
+        setSelectedText(selectedText);
+
+        // Get the bounding rectangle of the selection
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
-        setButtonPosition({ top: rect.bottom, left: rect.left });
+
+        // Calculate the position for the button
+        const buttonWidth = 100; // Adjust based on your button's actual width
+        const buttonHeight = 40; // Adjust based on your button's actual height
+        const margin = 10; // Margin from the selection
+
+        // Get scroll position
+        const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Calculate position considering scroll
+        let top = rect.bottom + scrollY + margin;
+        let left = rect.left + scrollX + (rect.width / 2) - (buttonWidth / 2);
+
+        // Adjust if the button would go off-screen
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        if (left < scrollX) left = scrollX + margin;
+        if (left + buttonWidth > scrollX + viewportWidth) left = scrollX + viewportWidth - buttonWidth - margin;
+        if (top + buttonHeight > scrollY + viewportHeight) top = rect.top + scrollY - buttonHeight - margin;
+
+        setButtonPosition({ top, left });
         setIsButtonShown(true);
       } else {
         setSelectedText("");
@@ -38,11 +63,19 @@ export default function TextSelectionHandler() {
       }
     };
 
+    const handleMouseUp = () => {
+      // Add a small delay to ensure the selection is complete
+      setTimeout(handleSelectionChange, 10);
+    };
+
     document.addEventListener("selectionchange", handleSelectionChange);
+    document.addEventListener("mouseup", handleMouseUp);
+    
     return () => {
       document.removeEventListener("selectionchange", handleSelectionChange);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isModalOpen]); // Add isModalOpen to the dependency array
+  }, [isModalOpen]);
 
   const handleOptionsClick = () => {
     setIsModalOpen(true);
@@ -75,7 +108,7 @@ export default function TextSelectionHandler() {
 
   return (
     <>
-      {isButtonShown && (
+      {isButtonShown && selectedText && (
         <AguapaneIAButton
           onClick={() => handleAIRequest(REFACTOR_TEXT_PROMPT + selectedText)}
           position={buttonPosition}

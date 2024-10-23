@@ -51,7 +51,6 @@ class AnthropicService {
           ]
         });
         const textBlock = message.content[0];
-        console.log(textBlock);
         return { text: textBlock.text };
       } catch (error) {
         console.error("Error al consultar a Claude:", error);
