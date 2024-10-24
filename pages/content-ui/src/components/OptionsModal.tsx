@@ -18,8 +18,7 @@ const OptionsModal: React.FC<OptionsModalProps> = ({
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSelectedOption = async (prompt: string) => {
-    const fullPrompt = `${prompt} ${selectedText}`;
-    onOptionSelected(fullPrompt);
+    onOptionSelected(prompt);
     setIsLoading(true);
     onClose();
   };
